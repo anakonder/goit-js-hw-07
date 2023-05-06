@@ -16,13 +16,9 @@ const simpleLightboxMarcup = galleryItems.map(({ preview, original, description 
 
 simpleLightboxList.innerHTML = simpleLightboxMarcup;
 
-const simpleLitebox = new SimpleLightbox('.gallery__link');
+const option = {
+    captionsData: "alt"
+}
 
-// simpleLightboxList.addEventListener('click', (event) => {
-//     if (event.target.nodeName === 'IMG') {
-//         // console.log(event)
-//         const imgSrc = event.target.currentSrc 
-//         console.log(imgSrc)  
-//         simpleLitebox = new Si
-//     }
-// })
+const simpleLitebox = new SimpleLightbox('.gallery__link', option);
+
