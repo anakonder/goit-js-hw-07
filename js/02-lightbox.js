@@ -2,3 +2,27 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 console.log(galleryItems);
+
+
+const simpleLightboxList = document.querySelector('.gallery')
+
+const simpleLightboxMarcup = galleryItems.map(({ preview, original, description }) =>
+    `<li class="gallery__item">
+    <a class="gallery__link" href="${original}" rel="noopener noreferrer">
+    <img class="gallery__image" src="${preview}" alt="${description}" />
+    </a>
+    </li>`
+).join('');
+
+simpleLightboxList.innerHTML = simpleLightboxMarcup;
+
+const simpleLitebox = new SimpleLightbox('.gallery__link');
+
+// simpleLightboxList.addEventListener('click', (event) => {
+//     if (event.target.nodeName === 'IMG') {
+//         // console.log(event)
+//         const imgSrc = event.target.currentSrc 
+//         console.log(imgSrc)  
+//         simpleLitebox = new Si
+//     }
+// })

@@ -8,7 +8,7 @@ const galleryList = document.querySelector('.gallery')
 
 const galleryMarcup = galleryItems.map(({ preview, original, description }) =>
     `<li class="gallery__item">
-    <a class="gallery__link" href="#" rel="noopener noreferrer">
+    <a class="gallery__link" href="${original}" rel="noopener noreferrer">
     <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}" />
     </a>
     </li>`
@@ -22,6 +22,7 @@ let lightbox;
 
 galleryList.addEventListener('click', (event) => {
     if (event.target.nodeName === 'IMG') { 
+        event.preventDefault();
         const imgSrc = event.target.dataset.source;
         lightbox = basicLightbox.create(`<img width="1280" height="855" src="${imgSrc}">`)
         lightbox.show()
