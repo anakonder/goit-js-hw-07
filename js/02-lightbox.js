@@ -17,7 +17,8 @@ const simpleLightboxMarcup = galleryItems.map(({ preview, original, description 
 simpleLightboxList.innerHTML = simpleLightboxMarcup;
 
 const option = {
-    captionsData: "alt"
+    captionsData: "alt",
+    captionsDelay: 250
 }
 
 const simpleLitebox = new SimpleLightbox('.gallery__link', option);

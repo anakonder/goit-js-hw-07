@@ -19,20 +19,29 @@ galleryList.innerHTML = galleryMarcup;
 console.log(galleryList)
  
 let lightbox;
+let keydownListener = (event) => {
+    if (event.key === 'Escape' && lightbox) {
+        lightbox.close()
+    }
+}
 
 galleryList.addEventListener('click', (event) => {
     if (event.target.nodeName === 'IMG') { 
         event.preventDefault();
         const imgSrc = event.target.dataset.source;
-        lightbox = basicLightbox.create(`<img width="1280" height="855" src="${imgSrc}">`)
+        lightbox = basicLightbox.create(`<img width="1280" height="855" src="${imgSrc}">`,
+            {
+                onClose: (instance) => {
+                    document.removeEventListener('keydown', keydownListener)
+                    lightbox = null;
+                }
+            }
+        )
+        document.addEventListener('keydown', keydownListener)
         lightbox.show()
+        
     }
 })
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === "Escape" && lightbox) {
-        lightbox.close()
-    }
-})
     
    
